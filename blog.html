@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog - GitAnalytics</title>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Google Fonts - Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="spinner">
+      <div class="double-bounce1"></div>
+      <div class="double-bounce2"></div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="header sticky-top">
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <i class="fab fa-github"></i>
+          <span>GitAnalytics</span>
+        </a>
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarMain">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="blog.html">Blog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="analyzer.html">Code Analyzer</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+          </ul>
+          
+          <div class="auth-buttons">
+            <button class="btn btn-outline-primary me-2" data-bs-toggle="modal" data-bs-target="#loginModal">Sign In</button>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#registerModal">Sign Up</button>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Page Header -->
+  <div class="page-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="page-header-content">
+            <h1>Blog</h1>
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Blog</li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Blog Content -->
+  <section class="blog-main py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8">
+          <!-- Featured Post -->
+          <div class="featured-post mb-5" data-aos="fade-up">
+            <div class="featured-post-image">
+              <img src="https://images.pexels.com/photos/3861943/pexels-photo-3861943.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="10 Ways to Improve Code Quality" class="img-fluid rounded-lg">
+            </div>
+            <div class="featured-post-content mt-4">
+              <div class="post-meta">
+                <span><i class="far fa-calendar-alt"></i> May 15, 2024</span>
+                <span><i class="far fa-user"></i> Admin</span>
+                <span><i class="far fa-folder"></i> Code Quality</span>
+                <span><i class="far fa-comments"></i> 24 Comments</span>
+              </div>
+              <h2 class="post-title mt-3"><a href="blog-single.html">10 Ways to Improve Your Code Quality Today</a></h2>
+              <p class="post-excerpt">Code quality is one of the most important aspects of software development. Poor code quality can lead to bugs, security vulnerabilities, and maintenance nightmares. In this article, we'll explore ten practical ways to improve your code quality immediately.</p>
+              <a href="blog-single.html" class="btn btn-primary">Read More</a>
+            </div>
+          </div>
+          
+          <!-- Blog Posts -->
+          <div class="row g-4">
+            <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+              <div class="blog-card">
+                <div class="blog-image">
+                  <img src="https://images.pexels.com/photos/60504/security-protection-anti-virus-software-60504.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Security Best Practices" class="img-fluid">
+                </div>
+                <div class="blog-content">
+                  <div class="blog-meta">
+                    <span><i class="far fa-calendar-alt"></i> May 10, 2024</span>
+                    <span><i class="far fa-user"></i> Admin</span>
+                  </div>
+                  <h3><a href="blog-single.html">Security Best Practices for GitHub Repositories</a></h3>
+                  <p>Protect your code and sensitive data with these essential security practices for GitHub repositories.</p>
+                  <a href="blog-single.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+              <div class="blog-card">
+                <div class="blog-image">
+                  <img src="https://images.pexels.com/photos/3183165/pexels-photo-3183165.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Team Collaboration" class="img-fluid">
+                </div>
+                <div class="blog-content">
+                  <div class="blog-meta">
+                    <span><i class="far fa-calendar-alt"></i> May 5, 2024</span>
+                    <span><i class="far fa-user"></i> Admin</span>
+                  </div>
+                  <h3><a href="blog-single.html">Effective Team Collaboration on GitHub</a></h3>
+                  <p>Discover strategies to improve collaboration and productivity among your development team on GitHub.</p>
+                  <a href="blog-single.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
+              <div class="blog-card">
+                <div class="blog-image">
+                  <img src="https://images.pexels.com/photos/1181290/pexels-photo-1181290.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Code Reviews" class="img-fluid">
+                </div>
+                <div class="blog-content">
+                  <div class="blog-meta">
+                    <span><i class="far fa-calendar-alt"></i> April 28, 2024</span>
+                    <span><i class="far fa-user"></i> Admin</span>
+                  </div>
+                  <h3><a href="blog-single.html">The Art of Effective Code Reviews</a></h3>
+                  <p>Learn how to conduct effective code reviews that improve code quality and foster a positive team culture.</p>
+                  <a href="blog-single.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-md-6" data-aos="fade-up" data-aos-delay="400">
+              <div class="blog-card">
+                <div class="blog-image">
+                  <img src="https://images.pexels.com/photos/11035471/pexels-photo-11035471.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Open Source" class="img-fluid">
+                </div>
+                <div class="blog-content">
+                  <div class="blog-meta">
+                    <span><i class="far fa-calendar-alt"></i> April 20, 2024</span>
+                    <span><i class="far fa-user"></i> Admin</span>
+                  </div>
+                  <h3><a href="blog-single.html">Getting Started with Open Source Contributions</a></h3>
+                  <p>A beginner's guide to making meaningful contributions to open source projects on GitHub.</p>
+                  <a href="blog-single.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-md-6" data-aos="fade-up" data-aos-delay="500">
+              <div class="blog-card">
+                <div class="blog-image">
+                  <img src="https://images.pexels.com/photos/7988079/pexels-photo-7988079.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="CI/CD Pipelines" class="img-fluid">
+                </div>
+                <div class="blog-content">
+                  <div class="blog-meta">
+                    <span><i class="far fa-calendar-alt"></i> April 15, 2024</span>
+                    <span><i class="far fa-user"></i> Admin</span>
+                  </div>
+                  <h3><a href="blog-single.html">Building Effective CI/CD Pipelines with GitHub Actions</a></h3>
+                  <p>Step-by-step guide to setting up continuous integration and deployment pipelines using GitHub Actions.</p>
+                  <a href="blog-single.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-md-6" data-aos="fade-up" data-aos-delay="600">
+              <div class="blog-card">
+                <div class="blog-image">
+                  <img src="https://images.pexels.com/photos/270348/pexels-photo-270348.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="API Development" class="img-fluid">
+                </div>
+                <div class="blog-content">
+                  <div class="blog-meta">
+                    <span><i class="far fa-calendar-alt"></i> April 5, 2024</span>
+                    <span><i class="far fa-user"></i> Admin</span>
+                  </div>
+                  <h3><a href="blog-single.html">Best Practices for API Development and Documentation</a></h3>
+                  <p>Learn how to design, develop, and document APIs that are easy to use and maintain.</p>
+                  <a href="blog-single.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Pagination -->
+          <div class="pagination-wrapper mt-5" data-aos="fade-up">
+            <nav aria-label="Blog pagination">
+              <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                  <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
+                    <i class="fas fa-chevron-left"></i>
+                  </a>
+                </li>
+                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                  <a class="page-link" href="#">
+                    <i class="fas fa-chevron-right"></i>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+        
+        <div class="col-lg-4">
+          <div class="blog-sidebar">
+            <!-- Search Widget -->
+            <div class="sidebar-widget search-widget" data-aos="fade-up">
+              <h4 class="widget-title">Search</h4>
+              <form class="search-form">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Search posts...">
+                  <button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
+                </div>
+              </form>
+            </div>
+            
+            <!-- Categories Widget -->
+            <div class="sidebar-widget categories-widget" data-aos="fade-up">
+              <h4 class="widget-title">Categories</h4>
+              <ul class="categories-list">
+                <li><a href="#">Code Quality <span>(12)</span></a></li>
+                <li><a href="#">Security <span>(8)</span></a></li>
+                <li><a href="#">Collaboration <span>(10)</span></a></li>
+                <li><a href="#">Best Practices <span>(15)</span></a></li>
+                <li><a href="#">Performance <span>(7)</span></a></li>
+                <li><a href="#">Tools & Tips <span>(9)</span></a></li>
+              </ul>
+            </div>
+            
+            <!-- Recent Posts Widget -->
+            <div class="sidebar-widget recent-posts-widget" data-aos="fade-up">
+              <h4 class="widget-title">Recent Posts</h4>
+              <div class="recent-posts">
+                <div class="recent-post-item">
+                  <div class="recent-post-image">
+                    <img src="https://images.pexels.com/photos/3861943/pexels-photo-3861943.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="10 Ways to Improve Code Quality" class="img-fluid">
+                  </div>
+                  <div class="recent-post-content">
+                    <h5><a href="blog-single.html">10 Ways to Improve Your Code Quality Today</a></h5>
+                    <span class="post-date"><i class="far fa-calendar-alt"></i> May 15, 2024</span>
+                  </div>
+                </div>
+                
+                <div class="recent-post-item">
+                  <div class="recent-post-image">
+                    <img src="https://images.pexels.com/photos/60504/security-protection-anti-virus-software-60504.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Security Best Practices" class="img-fluid">
+                  </div>
+                  <div class="recent-post-content">
+                    <h5><a href="blog-single.html">Security Best Practices for GitHub Repositories</a></h5>
+                    <span class="post-date"><i class="far fa-calendar-alt"></i> May 10, 2024</span>
+                  </div>
+                </div>
+                
+                <div class="recent-post-item">
+                  <div class="recent-post-image">
+                    <img src="https://images.pexels.com/photos/3183165/pexels-photo-3183165.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Team Collaboration" class="img-fluid">
+                  </div>
+                  <div class="recent-post-content">
+                    <h5><a href="blog-single.html">Effective Team Collaboration on GitHub</a></h5>
+                    <span class="post-date"><i class="far fa-calendar-alt"></i> May 5, 2024</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Tags Widget -->
+            <div class="sidebar-widget tags-widget" data-aos="fade-up">
+              <h4 class="widget-title">Tags</h4>
+              <div class="tags-list">
+                <a href="#" class="tag">GitHub</a>
+                <a href="#" class="tag">Code Quality</a>
+                <a href="#" class="tag">Security</a>
+                <a href="#" class="tag">DevOps</a>
+                <a href="#" class="tag">CI/CD</a>
+                <a href="#" class="tag">Testing</a>
+                <a href="#" class="tag">Open Source</a>
+                <a href="#" class="tag">Git</a>
+                <a href="#" class="tag">API</a>
+                <a href="#" class="tag">Documentation</a>
+              </div>
+            </div>
+            
+            <!-- Subscription Widget -->
+            <div class="sidebar-widget subscription-widget" data-aos="fade-up">
+              <h4 class="widget-title">Newsletter</h4>
+              <p>Subscribe to our newsletter for the latest blog posts and updates.</p>
+              <form class="subscription-form">
+                <div class="mb-3">
+                  <input type="email" class="form-control" placeholder="Your email address" required>
+                </div>
+                <div class="d-grid">
+                  <button type="submit" class="btn btn-primary">Subscribe</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Create Blog Post CTA -->
+  <section class="create-post-cta py-5 bg-light">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-8" data-aos="fade-right">
+          <h2>Have Knowledge to Share?</h2>
+          <p class="lead">Share your expertise with our community by writing a blog post about GitHub, code quality, or best practices.</p>
+        </div>
+        <div class="col-lg-4 text-lg-end mt-4 mt-lg-0" data-aos="fade-left">
+          <a href="blog-create.html" class="btn btn-primary btn-lg">
+            <i class="fas fa-pencil-alt me-2"></i>Write a Post
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Login Modal -->
+  <div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header border-0">
+          <h5 class="modal-title">Sign In</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="loginForm">
+            <div class="mb-3">
+              <label for="loginEmail" class="form-label">Email address</label>
+              <input type="email" class="form-control" id="loginEmail" required>
+            </div>
+            <div class="mb-3">
+              <label for="loginPassword" class="form-label">Password</label>
+              <input type="password" class="form-control" id="loginPassword" required>
+            </div>
+            <div class="mb-3 form-check">
+              <input type="checkbox" class="form-check-input" id="rememberMe">
+              <label class="form-check-label" for="rememberMe">Remember me</label>
+            </div>
+            <div class="d-grid">
+              <button type="submit" class="btn btn-primary">Sign In</button>
+            </div>
+            <div class="text-center mt-3">
+              <a href="#" class="text-muted">Forgot password?</a>
+            </div>
+          </form>
+          <div class="text-center mt-4">
+            <p class="mb-0">Don't have an account? <a href="#" data-bs-toggle="modal" data-bs-target="#registerModal" data-bs-dismiss="modal">Sign up</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Register Modal -->
+  <div class="modal fade" id="registerModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header border-0">
+          <h5 class="modal-title">Create an Account</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="registerForm">
+            <div class="mb-3">
+              <label for="fullName" class="form-label">Full Name</label>
+              <input type="text" class="form-control" id="fullName" required>
+            </div>
+            <div class="mb-3">
+              <label for="registerEmail" class="form-label">Email address</label>
+              <input type="email" class="form-control" id="registerEmail" required>
+            </div>
+            <div class="mb-3">
+              <label for="registerPassword" class="form-label">Password</label>
+              <input type="password" class="form-control" id="registerPassword" required>
+            </div>
+            <div class="mb-3">
+              <label for="confirmPassword" class="form-label">Confirm Password</label>
+              <input type="password" class="form-control" id="confirmPassword" required>
+            </div>
+            <div class="mb-3 form-check">
+              <input type="checkbox" class="form-check-input" id="agreeTerms" required>
+              <label class="form-check-label" for="agreeTerms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+            </div>
+            <div class="d-grid">
+              <button type="submit" class="btn btn-primary">Sign Up</button>
+            </div>
+          </form>
+          <div class="text-center mt-4">
+            <p class="mb-0">Already have an account? <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-dismiss="modal">Sign in</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <div class="footer-about">
+            <h4 class="footer-title">About GitAnalytics</h4>
+            <p>We help developers and teams analyze their GitHub projects to improve code quality, security, and collaboration.</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#"><i class="fab fa-github"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-2 col-md-4">
+          <div class="footer-links">
+            <h4 class="footer-title">Quick Links</h4>
+            <ul class="list-unstyled">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="blog.html">Blog</a></li>
+              <li><a href="analyzer.html">Code Analyzer</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="col-lg-2 col-md-4">
+          <div class="footer-links">
+            <h4 class="footer-title">Resources</h4>
+            <ul class="list-unstyled">
+              <li><a href="#">Documentation</a></li>
+              <li><a href="#">API</a></li>
+              <li><a href="#">FAQ</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Service</a></li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-4">
+          <div class="footer-newsletter">
+            <h4 class="footer-title">Newsletter</h4>
+            <p>Subscribe to our newsletter for the latest updates and insights.</p>
+            <form class="newsletter-form">
+              <div class="input-group">
+                <input type="email" class="form-control" placeholder="Your email address" required>
+                <button class="btn btn-primary" type="submit">Subscribe</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <div class="row">
+          <div class="col-md-6">
+            <p class="copyright">&copy; 2024 GitAnalytics. All rights reserved.</p>
+          </div>
+          <div class="col-md-6 text-md-end">
+            <p class="credits">Designed with <i class="fas fa-heart"></i> by Bolt</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <a href="#" class="back-to-top">
+    <i class="fas fa-arrow-up"></i>
+  </a>
+
+  <!-- Bootstrap JS Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- AOS - Animate On Scroll Library -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  
+  <!-- Custom JS -->
+  <script src="main.js"></script>
+</body>
+</html>

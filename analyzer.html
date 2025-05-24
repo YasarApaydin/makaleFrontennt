@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GitHub Repository Analysis - GitAnalytics</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="analyzer1.css">
+  <link rel="stylesheet" href="analyzer.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <nav class="nav-container">
+      <a href="/" class="logo">
+        <i class="fab fa-github"></i>
+        <span>GitAnalytics</span>
+      </a>
+      <div class="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </div>
+      <ul class="nav-menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="analyzer.html" class="active">Analyzer</a></li>
+        <li><a href="Blog.html">Blog</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="auth-buttons">
+        <button class="signin-btn">Sign In</button>
+        <button class="signup-btn">Sign Up</button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="main-container">
+    <!-- Hero Section with GitHub Input -->
+    <section class="hero-section">
+      <h1 class="hero-title">GitHub Repository Analysis</h1>
+      <p class="hero-subtitle">Discover insights, identify issues, and get recommendations for your project</p>
+      
+      <div class="github-input-section">
+        <form id="analyzerForm">
+          <div class="github-input-container">
+            <div class="input-wrapper">
+              <i class="fab fa-github input-icon"></i>
+              <input type="text" class="github-input" placeholder="github.com/username/repository">
+            </div>
+            <button type="submit" class="analyze-btn">
+              <i class="fas fa-search"></i>
+              Analyze Repository
+            </button>
+          </div>
+        </form>
+        <div class="popular-repos">
+          <p>Try these popular repositories:</p>
+          <div class="repo-tags">
+            <a href="#" class="repo-tag" data-repo="facebook/react">facebook/react</a>
+            <a href="#" class="repo-tag" data-repo="vuejs/vue">vuejs/vue</a>
+            <a href="#" class="repo-tag" data-repo="angular/angular">angular/angular</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Analysis Results (initially hidden) -->
+    <section id="analysisResults" style="display: none;">
+      <!-- Repository Overview -->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-title-wrapper">
+            <img src="https://avatars.githubusercontent.com/u/6412038?s=200&v=4" alt="Repository" class="project-logo">
+            <div>
+              <h2 class="project-name">React Native UI Kit</h2>
+              <span class="project-badge">Public</span>
+            </div>
+          </div>
+          <p class="project-description">A comprehensive set of customizable UI components for React Native applications</p>
+          <div class="project-meta">
+            <span class="meta-item">
+              <i class="fas fa-star"></i>
+              1.2k Stars
+            </span>
+            <span class="meta-item">
+              <i class="fas fa-code-branch"></i>
+              234 Forks
+            </span>
+            <span class="meta-item">
+              <i class="fas fa-users"></i>
+              48 Contributors
+            </span>
+            <span class="meta-item">
+              <i class="fas fa-clock"></i>
+              Last update: 2 days ago
+            </span>
+          </div>
+        </div>
+
+        <!-- Key Stats -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon">
+              <i class="fas fa-code"></i>
+            </div>
+            <div class="stat-info">
+              <h3>Code Quality</h3>
+              <p>9.2/10</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <div class="stat-info">
+              <h3>Security Score</h3>
+              <p>8.7/10</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">
+              <i class="fas fa-book"></i>
+            </div>
+            <div class="stat-info">
+              <h3>Documentation</h3>
+              <p>7.5/10</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Analysis Tabs -->
+        <div class="analysis-tabs">
+          <div class="tab-header">
+            <button class="tab-btn active" data-tab="overview">Overview</button>
+            <button class="tab-btn" data-tab="code-quality">Code Quality</button>
+            <button class="tab-btn" data-tab="security">Security</button>
+            <button class="tab-btn" data-tab="contributors">Contributors</button>
+            <button class="tab-btn" data-tab="recommendations">Recommendations</button>
+          </div>
+          
+          <!-- Tab Content -->
+          <div class="tab-content">
+            <!-- Overview Tab -->
+            <div class="tab-pane active" id="overview">
+              <div class="tab-grid">
+                <div class="chart-card">
+                  <h3>Language Distribution</h3>
+                  <div class="chart-container">
+                    <canvas id="languageChart"></canvas>
+                  </div>
+                </div>
+                
+                <div class="chart-card">
+                  <h3>Commit Activity</h3>
+                  <div class="chart-container">
+                    <canvas id="commitChart"></canvas>
+                  </div>
+                </div>
+                
+                <div class="info-card">
+                  <h3>Repository Info</h3>
+                  <ul class="info-list">
+                    <li>
+                      <span class="info-label">License</span>
+                      <span class="info-value">MIT</span>
+                    </li>
+                    <li>
+                      <span class="info-label">Created</span>
+                      <span class="info-value">Jan 15, 2020</span>
+                    </li>
+                    <li>
+                      <span class="info-label">Open Issues</span>
+                      <span class="info-value">23</span>
+                    </li>
+                    <li>
+                      <span class="info-label">Pull Requests</span>
+                      <span class="info-value">12</span>
+                    </li>
+                    <li>
+                      <span class="info-label">Latest Release</span>
+                      <span class="info-value">v2.4.0 (3 weeks ago)</span>
+                    </li>
+                  </ul>
+                </div>
+                
+                <div class="chart-card">
+                  <h3>Code Structure</h3>
+                  <div class="chart-container">
+                    <canvas id="codeStructureChart"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Code Quality Tab -->
+            <div class="tab-pane" id="code-quality">
+              <div class="tab-grid">
+                <div class="chart-card">
+                  <h3>Quality Trends</h3>
+                  <div class="chart-container">
+                    <canvas id="qualityTrendsChart"></canvas>
+                  </div>
+                </div>
+                
+                <div class="metrics-card">
+                  <h3>Code Metrics</h3>
+                  <div class="metrics-list">
+                    <div class="metric-item">
+                      <div class="metric-info">
+                        <h4>Complexity</h4>
+                        <p>Average cyclomatic complexity per function</p>
+                      </div>
+                      <div class="metric-score excellent">
+                        <span>3.2</span>
+                        <small>Excellent</small>
+                      </div>
+                    </div>
+                    
+                    <div class="metric-item">
+                      <div class="metric-info">
+                        <h4>Duplication</h4>
+                        <p>Percentage of duplicated code</p>
+                      </div>
+                      <div class="metric-score good">
+                        <span>4.5%</span>
+                        <small>Good</small>
+                      </div>
+                    </div>
+                    
+                    <div class="metric-item">
+                      <div class="metric-info">
+                        <h4>Documentation</h4>
+                        <p>Documentation coverage</p>
+                      </div>
+                      <div class="metric-score average">
+                        <span>68%</span>
+                        <small>Average</small>
+                      </div>
+                    </div>
+                    
+                    <div class="metric-item">
+                      <div class="metric-info">
+                        <h4>Test Coverage</h4>
+                        <p>Code covered by tests</p>
+                      </div>
+                      <div class="metric-score poor">
+                        <span>48%</span>
+                        <small>Poor</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="findings-card">
+                  <h3>Key Findings</h3>
+                  <ul class="findings-list">
+                    <li class="finding-item positive">
+                      <i class="fas fa-check-circle"></i>
+                      <div>
+                        <h4>Well-structured components</h4>
+                        <p>Components follow a consistent pattern and are well-organized</p>
+                      </div>
+                    </li>
+                    
+                    <li class="finding-item positive">
+                      <i class="fas fa-check-circle"></i>
+                      <div>
+                        <h4>Good naming conventions</h4>
+                        <p>Variable and function names are descriptive and follow conventions</p>
+                      </div>
+                    </li>
+                    
+                    <li class="finding-item negative">
+                      <i class="fas fa-times-circle"></i>
+                      <div>
+                        <h4>Insufficient testing</h4>
+                        <p>Several key components lack proper unit tests</p>
+                      </div>
+                    </li>
+                    
+                    <li class="finding-item negative">
+                      <i class="fas fa-times-circle"></i>
+                      <div>
+                        <h4>Long functions</h4>
+                        <p>Some functions exceed the recommended length of 50 lines</p>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Security Tab -->
+            <div class="tab-pane" id="security">
+              <div class="tab-grid">
+                <div class="chart-card">
+                  <h3>Vulnerability Trends</h3>
+                  <div class="chart-container">
+                    <canvas id="vulnerabilityChart"></canvas>
+                  </div>
+                </div>
+                
+                <div class="security-summary-card">
+                  <h3>Security Summary</h3>
+                  <div class="security-stats">
+                    <div class="security-stat">
+                      <div class="stat-circle critical">
+                        <span>0</span>
+                      </div>
+                      <p>Critical</p>
+                    </div>
+                    
+                    <div class="security-stat">
+                      <div class="stat-circle high">
+                        <span>1</span>
+                      </div>
+                      <p>High</p>
+                    </div>
+                    
+                    <div class="security-stat">
+                      <div class="stat-circle medium">
+                        <span>4</span>
+                      </div>
+                      <p>Medium</p>
+                    </div>
+                    
+                    <div class="security-stat">
+                      <div class="stat-circle low">
+                        <span>8</span>
+                      </div>
+                      <p>Low</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="vulnerabilities-card">
+                  <h3>Security Vulnerabilities</h3>
+                  <div class="vulnerabilities-list">
+                    <div class="vulnerability-item high">
+                      <div class="vulnerability-header">
+                        <span class="vulnerability-severity high">High</span>
+                        <span class="vulnerability-status">Open</span>
+                      </div>
+                      <h4>Outdated Dependency</h4>
+                      <p>Package "example-lib" has a known vulnerability (CVE-2023-1234)</p>
+                      <div class="vulnerability-footer">
+                        <span>Location: package.json</span>
+                        <span>Detected: 3 days ago</span>
+                      </div>
+                    </div>
+                    
+                    <div class="vulnerability-item medium">
+                      <div class="vulnerability-header">
+                        <span class="vulnerability-severity medium">Medium</span>
+                        <span class="vulnerability-status">Open</span>
+                      </div>
+                      <h4>XSS Vulnerability</h4>
+                      <p>Potential XSS vulnerability in user input rendering</p>
+                      <div class="vulnerability-footer">
+                        <span>Location: src/components/UserInput.js</span>
+                        <span>Detected: 1 week ago</span>
+                      </div>
+                    </div>
+                    
+                    <div class="vulnerability-item medium">
+                      <div class="vulnerability-header">
+                        <span class="vulnerability-severity medium">Medium</span>
+                        <span class="vulnerability-status">Fixed</span>
+                      </div>
+                      <h4>Insecure Authentication</h4>
+                      <p>Weak token generation in authentication flow</p>
+                      <div class="vulnerability-footer">
+                        <span>Location: src/utils/auth.js</span>
+                        <span>Fixed: 2 weeks ago</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Contributors Tab -->
+            <div class="tab-pane" id="contributors">
+              <div class="tab-grid">
+                <div class="chart-card">
+                  <h3>Contribution Distribution</h3>
+                  <div class="chart-container">
+                    <canvas id="contributorsChart"></canvas>
+                  </div>
+                </div>
+                
+                <div class="contributor-stats-card">
+                  <h3>Contributor Statistics</h3>
+                  <ul class="stats-list">
+                    <li>
+                      <span class="stat-label">Total Contributors</span>
+                      <span class="stat-value">48</span>
+                    </li>
+                    <li>
+                      <span class="stat-label">Active Contributors (Last Month)</span>
+                      <span class="stat-value">17</span>
+                    </li>
+                    <li>
+                      <span class="stat-label">New Contributors (Last Month)</span>
+                      <span class="stat-value">5</span>
+                    </li>
+                    <li>
+                      <span class="stat-label">Average PRs per Month</span>
+                      <span class="stat-value">42</span>
+                    </li>
+                    <li>
+                      <span class="stat-label">Average PRs per Contributor</span>
+                      <span class="stat-value">3.5</span>
+                    </li>
+                  </ul>
+                </div>
+                
+                <div class="contributors-list-card">
+                  <h3>Top Contributors</h3>
+                  <div class="contributors-list">
+                    <div class="contributor-item">
+                      <img src="https://ui-avatars.com/api/?name=John+Doe&background=4f46e5&color=fff" alt="John Doe" class="contributor-avatar">
+                      <div class="contributor-info">
+                        <h4>John Doe</h4>
+                        <p>@johndoe</p>
+                        <div class="contribution-stats">
+                          <span><i class="fas fa-code-commit"></i> 234 commits</span>
+                          <span><i class="fas fa-code-branch"></i> 45 PRs</span>
+                        </div>
+                      </div>
+                      <div class="contributor-badge">
+                        <span>Maintainer</span>
+                      </div>
+                    </div>
+                    
+                    <div class="contributor-item">
+                      <img src="https://ui-avatars.com/api/?name=Jane+Smith&background=4f46e5&color=fff" alt="Jane Smith" class="contributor-avatar">
+                      <div class="contributor-info">
+                        <h4>Jane Smith</h4>
+                        <p>@janesmith</p>
+                        <div class="contribution-stats">
+                          <span><i class="fas fa-code-commit"></i> 187 commits</span>
+                          <span><i class="fas fa-code-branch"></i> 36 PRs</span>
+                        </div>
+                      </div>
+                      <div class="contributor-badge">
+                        <span>Core Team</span>
+                      </div>
+                    </div>
+                    
+                    <div class="contributor-item">
+                      <img src="https://ui-avatars.com/api/?name=Alex+Brown&background=4f46e5&color=fff" alt="Alex Brown" class="contributor-avatar">
+                      <div class="contributor-info">
+                        <h4>Alex Brown</h4>
+                        <p>@alexbrown</p>
+                        <div class="contribution-stats">
+                          <span><i class="fas fa-code-commit"></i> 142 commits</span>
+                          <span><i class="fas fa-code-branch"></i> 28 PRs</span>
+                        </div>
+                      </div>
+                      <div class="contributor-badge">
+                        <span>Contributor</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Recommendations Tab -->
+            <div class="tab-pane" id="recommendations">
+              <div class="recommendations-list">
+                <div class="recommendation-item priority-high">
+                  <div class="recommendation-icon">
+                    <i class="fas fa-exclamation-circle"></i>
+                  </div>
+                  <div class="recommendation-content">
+                    <h4>Improve Test Coverage</h4>
+                    <p>The project's test coverage is below industry standards. Consider adding more unit tests, especially for critical components.</p>
+                    <div class="recommendation-tags">
+                      <span class="tag">Testing</span>
+                      <span class="tag">High Priority</span>
+                    </div>
+                    <div class="recommendation-details">
+                      <h5>Recommended Actions:</h5>
+                      <ol>
+                        <li>Add unit tests for components in src/components/core</li>
+                        <li>Implement integration tests for key user flows</li>
+                        <li>Set up CI/CD pipeline with test coverage reporting</li>
+                      </ol>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="recommendation-item priority-high">
+                  <div class="recommendation-icon">
+                    <i class="fas fa-exclamation-circle"></i>
+                  </div>
+                  <div class="recommendation-content">
+                    <h4>Update Vulnerable Dependencies</h4>
+                    <p>One or more dependencies have known security vulnerabilities that should be addressed.</p>
+                    <div class="recommendation-tags">
+                      <span class="tag">Security</span>
+                      <span class="tag">High Priority</span>
+                    </div>
+                    <div class="recommendation-details">
+                      <h5>Affected Dependencies:</h5>
+                      <ul>
+                        <li>example-lib (^1.2.3) - Update to version 1.3.0 or later</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="recommendation-item priority-medium">
+                  <div class="recommendation-icon">
+                    <i class="fas fa-info-circle"></i>
+                  </div>
+                  <div class="recommendation-content">
+                    <h4>Improve Documentation</h4>
+                    <p>API documentation is incomplete for several components.</p>
+                    <div class="recommendation-tags">
+                      <span class="tag">Documentation</span>
+                      <span class="tag">Medium Priority</span>
+                    </div>
+                    <div class="recommendation-details">
+                      <h5>Components Needing Documentation:</h5>
+                      <ul>
+                        <li>src/components/Button.js - Missing prop descriptions</li>
+                        <li>src/components/Modal.js - No usage examples</li>
+                        <li>src/utils/index.js - Several utility functions undocumented</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="recommendation-item priority-medium">
+                  <div class="recommendation-icon">
+                    <i class="fas fa-info-circle"></i>
+                  </div>
+                  <div class="recommendation-content">
+                    <h4>Refactor Long Functions</h4>
+                    <p>Several functions exceed the recommended length of 50 lines, making them harder to test and maintain.</p>
+                    <div class="recommendation-tags">
+                      <span class="tag">Code Quality</span>
+                      <span class="tag">Medium Priority</span>
+                    </div>
+                    <div class="recommendation-details">
+                      <h5>Functions to Refactor:</h5>
+                      <ul>
+                        <li>src/utils/data-transformer.js:processData (124 lines)</li>
+                        <li>src/components/Table.js:render (87 lines)</li>
+                        <li>src/hooks/useForm.js:handleSubmit (76 lines)</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="recommendation-item priority-low">
+                  <div class="recommendation-icon">
+                    <i class="fas fa-lightbulb"></i>
+                  </div>
+                  <div class="recommendation-content">
+                    <h4>Add TypeScript Types</h4>
+                    <p>Consider migrating to TypeScript or adding PropTypes to improve code reliability.</p>
+                    <div class="recommendation-tags">
+                      <span class="tag">Developer Experience</span>
+                      <span class="tag">Low Priority</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <p>&copy; 2024 GitAnalytics. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="analyzer.js"></script>
+  <script src="analyzerjs.js"></script>
+</body>
+</html>

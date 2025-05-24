@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Post Details - GitAnalytics</title>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Google Fonts - Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="blog.css">
+</head>
+<body>
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="spinner">
+      <div class="double-bounce1"></div>
+      <div class="double-bounce2"></div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="header sticky-top">
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <i class="fab fa-github"></i>
+          <span>GitAnalytics</span>
+        </a>
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarMain">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="blog.html">Blog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="analyzer.html">Code Analyzer</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+          </ul>
+          
+          <div class="auth-buttons">
+            <button class="btn btn-outline-primary me-2" data-bs-toggle="modal" data-bs-target="#loginModal">Sign In</button>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#registerModal">Sign Up</button>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Page Header -->
+  <div class="page-header blog-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="page-header-content">
+            <h1>Post Details</h1>
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="blog.html">Blog</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Post Details</li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Post Content -->
+  <section class="post-section py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8">
+          <div class="post-content-wrapper">
+            <div class="post-header">
+              <div class="post-categories">
+                <a href="#" class="post-category">Development</a>
+                <a href="#" class="post-category">Code Quality</a>
+              </div>
+              <h1 class="post-title">10 Essential Code Quality Metrics Every Developer Should Know</h1>
+              <div class="post-meta">
+                <div class="post-author">
+                  <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Author" class="author-avatar">
+                  <span>By <a href="#">David Chen</a></span>
+                </div>
+                <div class="post-date">
+                  <i class="far fa-calendar-alt"></i>
+                  <span>June 24, 2024</span>
+                </div>
+                <div class="post-comments">
+                  <i class="far fa-comments"></i>
+                  <span>12 Comments</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="post-featured-image">
+              <img src="https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Code Quality Metrics" class="img-fluid rounded-4">
+            </div>
+            
+            <div class="post-body">
+              <p class="lead">Code quality is a critical aspect of software development that can make or break a project. Here are the essential metrics every developer should track to ensure their code remains clean, maintainable, and efficient.</p>
+              
+              <p>In today's fast-paced development environment, maintaining high code quality is more important than ever. Poor quality code can lead to bugs, security vulnerabilities, and increased maintenance costs. By tracking these key metrics, you can ensure your codebase remains healthy and sustainable.</p>
+              
+              <h2>1. Cyclomatic Complexity</h2>
+              
+              <p>Cyclomatic complexity measures the number of linearly independent paths through a program's source code. In simpler terms, it quantifies how complex your code is by counting the number of decision points (such as if statements, while loops, and case statements).</p>
+              
+              <blockquote class="blockquote">
+                <p>"High cyclomatic complexity often indicates that code is difficult to test, maintain, and understand. Aim for a cyclomatic complexity under 10 for individual functions."</p>
+                <footer class="blockquote-footer">Martin Fowler, <cite title="Source">Refactoring: Improving the Design of Existing Code</cite></footer>
+              </blockquote>
+              
+              <h2>2. Code Coverage</h2>
+              
+              <p>Code coverage measures the percentage of your codebase that is executed during testing. This metric helps you identify areas of your code that aren't being tested properly.</p>
+              
+              <div class="code-block">
+<pre><code class="language-javascript">// Example of code that would improve code coverage
+function calculateDiscount(price, discountType) {
+  if (discountType === 'PREMIUM') {
+    return price * 0.2;
+  } else if (discountType === 'STANDARD') {
+    return price * 0.1;
+  } else {
+    // This branch might be missed in tests
+    return 0;
+  }
+}</code></pre>
+              </div>
+              
+              <p>Aim for at least 80% code coverage, but remember that the quality of tests matters more than just the percentage.</p>
+              
+              <h2>3. Code Duplication</h2>
+              
+              <p>Code duplication measures the amount of repeated code in your codebase. Duplicated code can lead to maintenance issues, as changes need to be made in multiple places.</p>
+              
+              <p>Tools like SonarQube or ESLint can help identify duplicated code. Aim to keep duplication below 5% of your overall codebase.</p>
+              
+              <div class="image-with-caption">
+                <img src="https://images.pexels.com/photos/1181290/pexels-photo-1181290.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Code Review" class="img-fluid rounded-3">
+                <span class="caption">Regular code reviews can help identify issues early</span>
+              </div>
+              
+              <h2>4. Code Churn</h2>
+              
+              <p>Code churn measures how often code is modified over time. High churn can indicate instability or poor initial design that requires frequent changes.</p>
+              
+              <p>Monitor files with high churn rates, as these might benefit from refactoring or a more thoughtful design approach.</p>
+              
+              <h2>5. Maintainability Index</h2>
+              
+              <p>The maintainability index is a composite metric that takes into account cyclomatic complexity, lines of code, and Halstead volume to provide an overall assessment of how maintainable your code is.</p>
+              
+              <p>The index typically ranges from 0 to 100, with higher values indicating better maintainability. Aim for a score above 70 for most codebases.</p>
+              
+              <h2>6. Function/Method Size</h2>
+              
+              <p>This simple metric measures the number of lines in each function or method. Excessively long functions are harder to understand, test, and maintain.</p>
+              
+              <blockquote class="blockquote">
+                <p>"Functions should do one thing. They should do it well. They should do it only."</p>
+                <footer class="blockquote-footer">Robert C. Martin, <cite title="Source">Clean Code</cite></footer>
+              </blockquote>
+              
+              <p>Aim to keep functions under 30 lines of code, with most functions being 10-15 lines.</p>
+              
+              <h2>7. Comment Density</h2>
+              
+              <p>Comment density measures the ratio of comments to code. While comments can be helpful, excessive commenting might indicate overly complex code that needs refactoring.</p>
+              
+              <p>Focus on writing self-documenting code with clear variable names and logical structure, using comments to explain "why" rather than "what" the code is doing.</p>
+              
+              <h2>8. Depth of Inheritance</h2>
+              
+              <p>This metric measures how many levels of inheritance exist in your object-oriented code. Deep inheritance hierarchies can make code harder to understand and maintain.</p>
+              
+              <p>Most experts recommend keeping inheritance depth to 3 or fewer levels, favoring composition over inheritance when possible.</p>
+              
+              <h2>9. Coupling and Cohesion</h2>
+              
+              <p>Coupling measures how interconnected different modules or classes are, while cohesion measures how focused a module is on a single purpose.</p>
+              
+              <p>Aim for low coupling (fewer dependencies between modules) and high cohesion (each module has a clear, singular purpose).</p>
+              
+              <h2>10. Technical Debt Ratio</h2>
+              
+              <p>Technical debt ratio measures the estimated time needed to fix all code smells and quality issues relative to the time it took to develop the application.</p>
+              
+              <p>Keep your technical debt ratio under 5% for sustainable development. Higher ratios indicate that you should dedicate time to refactoring and improving code quality.</p>
+              
+              <h2>Conclusion</h2>
+              
+              <p>By monitoring these metrics regularly, you can maintain a high-quality codebase that is easier to maintain, extend, and troubleshoot. Remember that these metrics are guidelines, not strict rules, and should be adapted to your specific project needs.</p>
+              
+              <p>Keep in mind that improving code quality is an ongoing process. Set up automated tools to track these metrics, and make code quality a core part of your development culture.</p>
+              
+              <div class="post-tags">
+                <i class="fas fa-tags"></i>
+                <a href="#" class="tag">Code Quality</a>
+                <a href="#" class="tag">Development</a>
+                <a href="#" class="tag">Best Practices</a>
+                <a href="#" class="tag">Software Engineering</a>
+              </div>
+            </div>
+            
+            <div class="post-author-bio">
+              <div class="author-image">
+                <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="David Chen" class="img-fluid rounded-circle">
+              </div>
+              <div class="author-info">
+                <h4>David Chen</h4>
+                <p class="author-title">Senior Software Engineer</p>
+                <p>David is a senior software engineer with over 10 years of experience in web development and software architecture. He specializes in code quality and performance optimization.</p>
+                <div class="author-social">
+                  <a href="#"><i class="fab fa-twitter"></i></a>
+                  <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                  <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+              </div>
+            </div>
+            
+            <div class="post-navigation">
+              <div class="nav-previous">
+                <a href="#">
+                  <span class="nav-subtitle">Previous</span>
+                  <span class="nav-title">The Art of Writing Meaningful GitHub Commit Messages</span>
+                </a>
+              </div>
+              <div class="nav-next">
+                <a href="#">
+                  <span class="nav-subtitle">Next</span>
+                  <span class="nav-title">Test-Driven Development: A Comprehensive Guide</span>
+                </a>
+              </div>
+            </div>
+            
+            <div class="related-posts">
+              <h3 class="section-title">Related Posts</h3>
+              <div class="row g-4">
+                <div class="col-md-4">
+                  <div class="related-post-card">
+                    <div class="post-image">
+                      <a href="#"><img src="https://images.pexels.com/photos/7988086/pexels-photo-7988086.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Related Post" class="img-fluid"></a>
+                    </div>
+                    <div class="post-content">
+                      <h5><a href="#">The Art of Writing Meaningful GitHub Commit Messages</a></h5>
+                      <div class="post-meta">
+                        <span><i class="far fa-calendar-alt"></i> June 18, 2024</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="col-md-4">
+                  <div class="related-post-card">
+                    <div class="post-image">
+                      <a href="#"><img src="https://images.pexels.com/photos/6804581/pexels-photo-6804581.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Related Post" class="img-fluid"></a>
+                    </div>
+                    <div class="post-content">
+                      <h5><a href="#">Test-Driven Development: A Comprehensive Guide</a></h5>
+                      <div class="post-meta">
+                        <span><i class="far fa-calendar-alt"></i> June 12, 2024</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="col-md-4">
+                  <div class="related-post-card">
+                    <div class="post-image">
+                      <a href="#"><img src="https://images.pexels.com/photos/4164418/pexels-photo-4164418.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Related Post" class="img-fluid"></a>
+                    </div>
+                    <div class="post-content">
+                      <h5><a href="#">Mastering Git Workflows for Team Collaboration</a></h5>
+                      <div class="post-meta">
+                        <span><i class="far fa-calendar-alt"></i> June 5, 2024</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="comments-section">
+              <h3 class="section-title">12 Comments</h3>
+              
+              <div class="comments-list">
+                <div class="comment">
+                  <div class="comment-avatar">
+                    <img src="https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Comment Avatar" class="img-fluid rounded-circle">
+                  </div>
+                  <div class="comment-content">
+                    <div class="comment-info">
+                      <h5 class="comment-author">Michael Johnson</h5>
+                      <span class="comment-date">June 25, 2024 at 9:35 AM</span>
+                    </div>
+                    <div class="comment-text">
+                      <p>Great article! I've been using SonarQube to track most of these metrics, and it's been tremendously helpful for maintaining our codebase. Would love to see a follow-up article on how to automate these checks in a CI/CD pipeline.</p>
+                    </div>
+                    <div class="comment-actions">
+                      <a href="#" class="reply-link"><i class="fas fa-reply"></i> Reply</a>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="comment comment-reply">
+                  <div class="comment-avatar">
+                    <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Author Avatar" class="img-fluid rounded-circle">
+                  </div>
+                  <div class="comment-content">
+                    <div class="comment-info">
+                      <h5 class="comment-author">David Chen <span class="author-badge">Author</span></h5>
+                      <span class="comment-date">June 25, 2024 at 10:12 AM</span>
+                    </div>
+                    <div class="comment-text">
+                      <p>Thanks for the suggestion, Michael! I'm actually planning a follow-up article specifically on integrating these metrics into CI/CD pipelines using GitHub Actions and other tools. Stay tuned for that in the next couple of weeks.</p>
+                    </div>
+                    <div class="comment-actions">
+                      <a href="#" class="reply-link"><i class="fas fa-reply"></i> Reply</a>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="comment">
+                  <div class="comment-avatar">
+                    <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Comment Avatar" class="img-fluid rounded-circle">
+                  </div>
+                  <div class="comment-content">
+                    <div class="comment-info">
+                      <h5 class="comment-author">Sarah Williams</h5>
+                      <span class="comment-date">June 25, 2024 at 11:47 AM</span>
+                    </div>
+                    <div class="comment-text">
+                      <p>I find that focusing too much on metrics can sometimes lead to "gaming the system" rather than actual improvements in code quality. How do you balance metrics with more qualitative assessments like peer reviews?</p>
+                    </div>
+                    <div class="comment-actions">
+                      <a href="#" class="reply-link"><i class="fas fa-reply"></i> Reply</a>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="comment">
+                  <div class="comment-avatar">
+                    <img src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Comment Avatar" class="img-fluid rounded-circle">
+                  </div>
+                  <div class="comment-content">
+                    <div class="comment-info">
+                      <h5 class="comment-author">Alex Turner</h5>
+                      <span class="comment-date">June 26, 2024 at 8:23 AM</span>
+                    </div>
+                    <div class="comment-text">
+                      <p>I'd add one more metric to this list: error rate in production. You can have perfect-looking code that still fails in real-world scenarios. Monitoring error rates and types can provide insights into where code quality issues might be hiding.</p>
+                    </div>
+                    <div class="comment-actions">
+                      <a href="#" class="reply-link"><i class="fas fa-reply"></i> Reply</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="comment-form-wrapper">
+                <h3 class="section-title">Leave a Comment</h3>
+                <form class="comment-form">
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <div class="mb-3">
+                        <label for="commentName" class="form-label">Name*</label>
+                        <input type="text" class="form-control" id="commentName" required>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="mb-3">
+                        <label for="commentEmail" class="form-label">Email*</label>
+                        <input type="email" class="form-control" id="commentEmail" required>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="mb-3">
+                        <label for="commentWebsite" class="form-label">Website</label>
+                        <input type="url" class="form-control" id="commentWebsite">
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="mb-3">
+                        <label for="commentBody" class="form-label">Comment*</label>
+                        <textarea class="form-control" id="commentBody" rows="5" required></textarea>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="saveInfo">
+                        <label class="form-check-label" for="saveInfo">Save my name, email, and website in this browser for the next time I comment</label>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <button type="submit" class="btn btn-primary">Post Comment</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-4">
+          <div class="sidebar">
+            <div class="sidebar-widget search-widget">
+              <h4 class="widget-title">Search</h4>
+              <form class="search-form">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Search for..." aria-label="Search">
+                  <button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
+                </div>
+              </form>
+            </div>
+            
+            <div class="sidebar-widget author-widget">
+              <h4 class="widget-title">About the Author</h4>
+              <div class="author-card">
+                <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="David Chen" class="author-image">
+                <h5 class="author-name">David Chen</h5>
+                <p class="author-bio">Senior Software Engineer with expertise in web development, clean code practices, and software architecture.</p>
+                <div class="author-social">
+                  <a href="#"><i class="fab fa-twitter"></i></a>
+                  <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                  <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+                <a href="#" class="btn btn-outline-primary btn-sm mt-3">View All Posts</a>
+              </div>
+            </div>
+            
+            <div class="sidebar-widget recent-posts-widget">
+              <h4 class="widget-title">Recent Posts</h4>
+              <div class="recent-posts-list">
+                <div class="recent-post-item">
+                  <div class="post-thumbnail">
+                    <a href="#"><img src="https://images.pexels.com/photos/7988086/pexels-photo-7988086.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Recent Post"></a>
+                  </div>
+                  <div class="post-info">
+                    <h5><a href="#">The Art of Writing Meaningful GitHub Commit Messages</a></h5>
+                    <span class="post-date"><i class="far fa-calendar-alt"></i> June 18, 2024</span>
+                  </div>
+                </div>
+                
+                <div class="recent-post-item">
+                  <div class="post-thumbnail">
+                    <a href="#"><img src="https://images.pexels.com/photos/6804581/pexels-photo-6804581.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Recent Post"></a>
+                  </div>
+                  <div class="post-info">
+                    <h5><a href="#">Test-Driven Development: A Comprehensive Guide</a></h5>
+                    <span class="post-date"><i class="far fa-calendar-alt"></i> June 12, 2024</span>
+                  </div>
+                </div>
+                
+                <div class="recent-post-item">
+                  <div class="post-thumbnail">
+                    <a href="#"><img src="https://images.pexels.com/photos/4164418/pexels-photo-4164418.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Recent Post"></a>
+                  </div>
+                  <div class="post-info">
+                    <h5><a href="#">Mastering Git Workflows for Team Collaboration</a></h5>
+                    <span class="post-date"><i class="far fa-calendar-alt"></i> June 5, 2024</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="sidebar-widget categories-widget">
+              <h4 class="widget-title">Categories</h4>
+              <ul class="categories-list">
+                <li><a href="#">Development <span>(15)</span></a></li>
+                <li><a href="#">Code Quality <span>(12)</span></a></li>
+                <li><a href="#">GitHub <span>(8)</span></a></li>
+                <li><a href="#">Testing <span>(10)</span></a></li>
+                <li><a href="#">Best Practices <span>(7)</span></a></li>
+                <li><a href="#">DevOps <span>(6)</span></a></li>
+                <li><a href="#">Security <span>(5)</span></a></li>
+              </ul>
+            </div>
+            
+            <div class="sidebar-widget tags-widget">
+              <h4 class="widget-title">Tags</h4>
+              <div class="tags-list">
+                <a href="#" class="tag">Code Quality</a>
+                <a href="#" class="tag">Development</a>
+                <a href="#" class="tag">GitHub</a>
+                <a href="#" class="tag">Testing</a>
+                <a href="#" class="tag">Best Practices</a>
+                <a href="#" class="tag">DevOps</a>
+                <a href="#" class="tag">CI/CD</a>
+                <a href="#" class="tag">Security</a>
+                <a href="#" class="tag">Performance</a>
+                <a href="#" class="tag">Web Development</a>
+              </div>
+            </div>
+            
+            <div class="sidebar-widget newsletter-widget">
+              <h4 class="widget-title">Newsletter</h4>
+              <p>Subscribe to our newsletter for the latest updates and insights.</p>
+              <form class="newsletter-form">
+                <div class="input-group">
+                  <input type="email" class="form-control" placeholder="Your email address" required>
+                  <button class="btn btn-primary" type="submit">Subscribe</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Login Modal -->
+  <div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header border-0">
+          <h5 class="modal-title">Sign In</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="loginForm">
+            <div class="mb-3">
+              <label for="loginEmail" class="form-label">Email address</label>
+              <input type="email" class="form-control" id="loginEmail" required>
+            </div>
+            <div class="mb-3">
+              <label for="loginPassword" class="form-label">Password</label>
+              <input type="password" class="form-control" id="loginPassword" required>
+            </div>
+            <div class="mb-3 form-check">
+              <input type="checkbox" class="form-check-input" id="rememberMe">
+              <label class="form-check-label" for="rememberMe">Remember me</label>
+            </div>
+            <div class="d-grid">
+              <button type="submit" class="btn btn-primary">Sign In</button>
+            </div>
+            <div class="text-center mt-3">
+              <a href="#" class="text-muted">Forgot password?</a>
+            </div>
+          </form>
+          <div class="text-center mt-4">
+            <p class="mb-0">Don't have an account? <a href="#" data-bs-toggle="modal" data-bs-target="#registerModal" data-bs-dismiss="modal">Sign up</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Register Modal -->
+  <div class="modal fade" id="registerModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header border-0">
+          <h5 class="modal-title">Create an Account</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="registerForm">
+            <div class="mb-3">
+              <label for="fullName" class="form-label">Full Name</label>
+              <input type="text" class="form-control" id="fullName" required>
+            </div>
+            <div class="mb-3">
+              <label for="registerEmail" class="form-label">Email address</label>
+              <input type="email" class="form-control" id="registerEmail" required>
+            </div>
+            <div class="mb-3">
+              <label for="registerPassword" class="form-label">Password</label>
+              <input type="password" class="form-control" id="registerPassword" required>
+            </div>
+            <div class="mb-3">
+              <label for="confirmPassword" class="form-label">Confirm Password</label>
+              <input type="password" class="form-control" id="confirmPassword" required>
+            </div>
+            <div class="mb-3 form-check">
+              <input type="checkbox" class="form-check-input" id="agreeTerms" required>
+              <label class="form-check-label" for="agreeTerms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+            </div>
+            <div class="d-grid">
+              <button type="submit" class="btn btn-primary">Sign Up</button>
+            </div>
+          </form>
+          <div class="text-center mt-4">
+            <p class="mb-0">Already have an account? <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-dismiss="modal">Sign in</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <div class="footer-about">
+            <h4 class="footer-title">About GitAnalytics</h4>
+            <p>We help developers and teams analyze their GitHub projects to improve code quality, security, and collaboration.</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#"><i class="fab fa-github"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-2 col-md-4">
+          <div class="footer-links">
+            <h4 class="footer-title">Quick Links</h4>
+            <ul class="list-unstyled">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="blog.html">Blog</a></li>
+              <li><a href="analyzer.html">Code Analyzer</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="col-lg-2 col-md-4">
+          <div class="footer-links">
+            <h4 class="footer-title">Resources</h4>
+            <ul class="list-unstyled">
+              <li><a href="#">Documentation</a></li>
+              <li><a href="#">API</a></li>
+              <li><a href="#">FAQ</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Service</a></li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-4">
+          <div class="footer-newsletter">
+            <h4 class="footer-title">Newsletter</h4>
+            <p>Subscribe to our newsletter for the latest updates and insights.</p>
+            <form class="newsletter-form">
+              <div class="input-group">
+                <input type="email" class="form-control" placeholder="Your email address" required>
+                <button class="btn btn-primary" type="submit">Subscribe</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <div class="row">
+          <div class="col-md-6">
+            <p class="copyright">&copy; 2024 GitAnalytics. All rights reserved.</p>
+          </div>
+          <div class="col-md-6 text-md-end">
+            <p class="credits">Designed with <i class="fas fa-heart"></i> by Bolt</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <a href="#" class="back-to-top">
+    <i class="fas fa-arrow-up"></i>
+  </a>
+
+  <!-- Bootstrap JS Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Custom JS -->
+  <script src="main.js"></script>
+  <script src="blog.js"></script>
+</body>
+</html>
