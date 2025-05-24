@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GitAnalytics - GitHub Repository Analysis Tool</title>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Google Fonts - Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- AOS - Animate On Scroll Library -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="spinner">
+      <div class="double-bounce1"></div>
+      <div class="double-bounce2"></div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="header sticky-top">
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <i class="fab fa-github"></i>
+          <span>GitAnalytics</span>
+        </a>
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarMain">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="blog.html">Blog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="analyzer.html">Code Analyzer</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+          </ul>
+          
+          <div class="auth-buttons">
+            <button class="btn btn-outline-primary me-2" data-bs-toggle="modal" data-bs-target="#loginModal">Sign In</button>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#registerModal">Sign Up</button>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6" data-aos="fade-right">
+          <div class="hero-content">
+            <h1>Analyze & Optimize Your GitHub Repositories</h1>
+            <p class="lead">GitAnalytics helps developers and teams improve code quality, security, and collaboration through comprehensive repository analysis.</p>
+            <div class="hero-buttons">
+              <a href="analyzer.html" class="btn btn-primary btn-lg">
+                <i class="fas fa-search me-2"></i>Analyze Your Code
+              </a>
+              <a href="#features" class="btn btn-outline-primary btn-lg ms-2">
+                <i class="fas fa-info-circle me-2"></i>Learn More
+              </a>
+            </div>
+            
+            <div class="hero-stats">
+              <div class="stat-item">
+                <div class="stat-number">10K+</div>
+                <div class="stat-label">Repositories Analyzed</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number">5K+</div>
+                <div class="stat-label">Happy Developers</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number">98%</div>
+                <div class="stat-label">Accuracy Rate</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6" data-aos="fade-left">
+          <div class="hero-image">
+            <img src="https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="GitAnalytics" class="img-fluid rounded-lg">
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="hero-wave">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+        <path fill="#f8f9fa" fill-opacity="1" d="M0,128L48,144C96,160,192,192,288,181.3C384,171,480,117,576,117.3C672,117,768,171,864,181.3C960,192,1056,160,1152,149.3C1248,139,1344,149,1392,154.7L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Analyzer Demo Section -->
+  <section class="analyzer-demo-section py-5 bg-light" id="features">
+    <div class="container">
+      <div class="section-header text-center mb-5">
+        <h2>Analyze Your GitHub Repository</h2>
+        <p class="text-muted">Get insights into your code quality, security, and performance</p>
+      </div>
+      
+      <div class="row">
+        <div class="col-lg-5" data-aos="fade-right">
+          <form id="demoAnalyzerForm" class="analyzer-form">
+            <div class="mb-4">
+              <label for="demoRepoUrl" class="form-label">Enter GitHub Repository URL</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="fab fa-github"></i></span>
+                <input type="text" class="form-control" id="demoRepoUrl" placeholder="username/repository" required>
+                <button class="btn btn-primary" type="submit">
+                  <i class="fas fa-search me-2"></i>Analyze
+                </button>
+              </div>
+              <small class="form-text text-muted">Example: facebook/react or microsoft/vscode</small>
+            </div>
+            
+            <div class="popular-repos">
+              <p class="mb-2">Try these popular repositories:</p>
+              <div class="repo-buttons">
+                <button type="button" class="btn btn-sm btn-outline-secondary me-2 mb-2" data-repo="facebook/react">facebook/react</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary me-2 mb-2" data-repo="tensorflow/tensorflow">tensorflow/tensorflow</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary me-2 mb-2" data-repo="microsoft/vscode">microsoft/vscode</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary me-2 mb-2" data-repo="vuejs/vue">vuejs/vue</button>
+              </div>
+            </div>
+            
+            <div class="mb-4">
+              <label class="form-label">Analysis Options</label>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" id="codeQualityCheck" checked>
+                <label class="form-check-label" for="codeQualityCheck">Code Quality Analysis</label>
+              </div>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" id="securityCheck" checked>
+                <label class="form-check-label" for="securityCheck">Security Vulnerability Detection</label>
+              </div>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" id="performanceCheck" checked>
+                <label class="form-check-label" for="performanceCheck">Performance Analysis</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="collaborationCheck" checked>
+                <label class="form-check-label" for="collaborationCheck">Collaboration Insights</label>
+              </div>
+            </div>
+            
+            <div class="text-center">
+              <a href="analyzer.html" class="btn btn-primary btn-lg">
+                <i class="fas fa-tachometer-alt me-2"></i>Try Full Analyzer
+              </a>
+            </div>
+          </form>
+        </div>
+        
+        <div class="col-lg-7" data-aos="fade-left">
+          <div class="analyzer-preview">
+            <div class="analyzer-preview-header">
+              <span class="repo-name">facebook/react</span>
+              <div class="preview-controls">
+                <span class="preview-dot"></span>
+                <span class="preview-dot"></span>
+                <span class="preview-dot"></span>
+              </div>
+            </div>
+            <div class="analyzer-preview-body">
+              <img src="https://images.pexels.com/photos/4551148/pexels-photo-4551148.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Analyzer Preview" class="img-fluid rounded">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features-section py-5">
+    <div class="container">
+      <div class="section-header text-center mb-5">
+        <h2>Key Features</h2>
+        <p class="text-muted">Powerful tools to improve your GitHub repositories</p>
+      </div>
+      
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-code"></i>
+            </div>
+            <h3>Code Quality Analysis</h3>
+            <p>Identify code smells, complexity issues, and potential bugs in your codebase to improve maintainability and reduce technical debt.</p>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <h3>Security Analysis</h3>
+            <p>Detect security vulnerabilities, insecure dependencies, and potential exploits in your code before they become problems.</p>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-tachometer-alt"></i>
+            </div>
+            <h3>Performance Insights</h3>
+            <p>Understand performance bottlenecks, memory usage patterns, and optimization opportunities in your applications.</p>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-project-diagram"></i>
+            </div>
+            <h3>Dependency Analysis</h3>
+            <p>Visualize your project's dependencies, identify outdated packages, and get recommendations for updates.</p>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-users"></i>
+            </div>
+            <h3>Collaboration Insights</h3>
+            <p>Analyze team contribution patterns, code review practices, and collaboration metrics to improve teamwork.</p>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <h3>Trend Analysis</h3>
+            <p>Track code quality, security, and performance metrics over time to see the impact of your improvements.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section class="how-it-works-section py-5 bg-light">
+    <div class="container">
+      <div class="section-header text-center mb-5">
+        <h2>How It Works</h2>
+        <p class="text-muted">Simple steps to analyze your GitHub repositories</p>
+      </div>
+      
+      <div class="row">
+        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="step-card">
+            <div class="step-number">1</div>
+            <div class="step-icon">
+              <i class="fas fa-sign-in-alt"></i>
+            </div>
+            <h3>Sign Up</h3>
+            <p>Create an account and connect your GitHub profile to GitAnalytics</p>
+          </div>
+        </div>
+        
+        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+          <div class="step-card">
+            <div class="step-number">2</div>
+            <div class="step-icon">
+              <i class="fas fa-link"></i>
+            </div>
+            <h3>Connect Repositories</h3>
+            <p>Select which repositories you want to analyze</p>
+          </div>
+        </div>
+        
+        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+          <div class="step-card">
+            <div class="step-number">3</div>
+            <div class="step-icon">
+              <i class="fas fa-cogs"></i>
+            </div>
+            <h3>Run Analysis</h3>
+            <p>Our system analyzes your code for quality, security, and performance</p>
+          </div>
+        </div>
+        
+        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+          <div class="step-card">
+            <div class="step-number">4</div>
+            <div class="step-icon">
+              <i class="fas fa-chart-pie"></i>
+            </div>
+            <h3>Get Results</h3>
+            <p>Review detailed insights and recommendations for improvement</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="text-center mt-5" data-aos="fade-up">
+        <a href="analyzer.html" class="btn btn-primary btn-lg">
+          <i class="fas fa-rocket me-2"></i>Get Started Now
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="benefits-section py-5">
+    <div class="container">
+      <div class="section-header text-center mb-5">
+        <h2>Why Choose GitAnalytics</h2>
+        <p class="text-muted">The benefits of using our platform</p>
+      </div>
+      
+      <div class="row align-items-center">
+        <div class="col-lg-6" data-aos="fade-right">
+          <img src="https://images.pexels.com/photos/3183183/pexels-photo-3183183.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Team Collaboration" class="img-fluid rounded-lg">
+        </div>
+        
+        <div class="col-lg-6" data-aos="fade-left">
+          <div class="benefits-content">
+            <div class="benefit-item">
+              <div class="benefit-icon">
+                <i class="fas fa-check-circle"></i>
+              </div>
+              <div class="benefit-text">
+                <h3>Improved Code Quality</h3>
+                <p>Identify and fix issues before they become problems, reducing technical debt and making your codebase more maintainable.</p>
+              </div>
+            </div>
+            
+            <div class="benefit-item">
+              <div class="benefit-icon">
+                <i class="fas fa-check-circle"></i>
+              </div>
+              <div class="benefit-text">
+                <h3>Enhanced Security</h3>
+                <p>Detect vulnerabilities early and keep your applications secure with proactive security analysis.</p>
+              </div>
+            </div>
+            
+            <div class="benefit-item">
+              <div class="benefit-icon">
+                <i class="fas fa-check-circle"></i>
+              </div>
+              <div class="benefit-text">
+                <h3>Better Collaboration</h3>
+                <p>Understand how your team works together and identify opportunities to improve collaboration and efficiency.</p>
+              </div>
+            </div>
+            
+            <div class="benefit-item">
+              <div class="benefit-icon">
+                <i class="fas fa-check-circle"></i>
+              </div>
+              <div class="benefit-text">
+                <h3>Time Savings</h3>
+                <p>Automate code analysis and focus on what matters most: building great software.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials-section py-5 bg-light">
+    <div class="container">
+      <div class="section-header text-center mb-5">
+        <h2>What Users Say</h2>
+        <p class="text-muted">Hear from developers who use GitAnalytics</p>
+      </div>
+      
+      <div class="row">
+        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="testimonial-card">
+            <div class="testimonial-content">
+              <p>"GitAnalytics has been instrumental in improving our code quality. The insights provided have helped us identify and fix issues we weren't even aware of."</p>
+            </div>
+            <div class="testimonial-author">
+              <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="John Smith" class="author-avatar">
+              <div class="author-info">
+                <h5>John Smith</h5>
+                <p>Senior Developer at TechCorp</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="testimonial-card">
+            <div class="testimonial-content">
+              <p>"The security analysis feature helped us identify several vulnerabilities in our dependencies before they could be exploited. This tool has become essential for our team."</p>
+            </div>
+            <div class="testimonial-author">
+              <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Emily Chen" class="author-avatar">
+              <div class="author-info">
+                <h5>Emily Chen</h5>
+                <p>CTO at StartupX</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="testimonial-card">
+            <div class="testimonial-content">
+              <p>"As an open-source maintainer, GitAnalytics gives me visibility into how contributors interact with the project and helps me identify areas that need attention."</p>
+            </div>
+            <div class="testimonial-author">
+              <img src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Michael Johnson" class="author-avatar">
+              <div class="author-info">
+                <h5>Michael Johnson</h5>
+                <p>Open Source Maintainer</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section class="pricing-section py-5">
+    <div class="container">
+      <div class="section-header text-center mb-5">
+        <h2>Choose Your Plan</h2>
+        <p class="text-muted">Flexible options for individuals and teams</p>
+      </div>
+      
+      <div class="row g-4 justify-content-center">
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="pricing-card">
+            <div class="pricing-header">
+              <h3>Free</h3>
+              <div class="price">$0<span>/month</span></div>
+            </div>
+            <div class="pricing-features">
+              <ul>
+                <li><i class="fas fa-check"></i> 5 repositories</li>
+                <li><i class="fas fa-check"></i> Basic code analysis</li>
+                <li><i class="fas fa-check"></i> Language distribution</li>
+                <li><i class="fas fa-check"></i> Commit activity tracking</li>
+                <li class="text-muted"><i class="fas fa-times"></i> Security vulnerability detection</li>
+                <li class="text-muted"><i class="fas fa-times"></i> Performance insights</li>
+                <li class="text-muted"><i class="fas fa-times"></i> Team collaboration analysis</li>
+                <li class="text-muted"><i class="fas fa-times"></i> Custom reporting</li>
+              </ul>
+            </div>
+            <div class="pricing-footer">
+              <a href="#" class="btn btn-outline-primary d-block">Get Started</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+          <div class="pricing-card popular">
+            <div class="popular-badge">Most Popular</div>
+            <div class="pricing-header">
+              <h3>Pro</h3>
+              <div class="price">$19<span>/month</span></div>
+            </div>
+            <div class="pricing-features">
+              <ul>
+                <li><i class="fas fa-check"></i> 25 repositories</li>
+                <li><i class="fas fa-check"></i> Advanced code analysis</li>
+                <li><i class="fas fa-check"></i> Language distribution</li>
+                <li><i class="fas fa-check"></i> Commit activity tracking</li>
+                <li><i class="fas fa-check"></i> Security vulnerability detection</li>
+                <li><i class="fas fa-check"></i> Performance insights</li>
+                <li class="text-muted"><i class="fas fa-times"></i> Team collaboration analysis</li>
+                <li class="text-muted"><i class="fas fa-times"></i> Custom reporting</li>
+              </ul>
+            </div>
+            <div class="pricing-footer">
+              <a href="#" class="btn btn-primary d-block">Get Started</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+          <div class="pricing-card">
+            <div class="pricing-header">
+              <h3>Team</h3>
+              <div class="price">$49<span>/month</span></div>
+            </div>
+            <div class="pricing-features">
+              <ul>
+                <li><i class="fas fa-check"></i> Unlimited repositories</li>
+                <li><i class="fas fa-check"></i> Advanced code analysis</li>
+                <li><i class="fas fa-check"></i> Language distribution</li>
+                <li><i class="fas fa-check"></i> Commit activity tracking</li>
+                <li><i class="fas fa-check"></i> Security vulnerability detection</li>
+                <li><i class="fas fa-check"></i> Performance insights</li>
+                <li><i class="fas fa-check"></i> Team collaboration analysis</li>
+                <li><i class="fas fa-check"></i> Custom reporting</li>
+              </ul>
+            </div>
+            <div class="pricing-footer">
+              <a href="#" class="btn btn-outline-primary d-block">Get Started</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="pricing-note text-center mt-4">
+        <p>All plans include a 14-day free trial. No credit card required to start.</p>
+        <p>Need a custom plan for your enterprise? <a href="contact.html">Contact us</a> for details.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-card" data-aos="fade-up">
+        <div class="row align-items-center">
+          <div class="col-lg-8">
+            <h2>Ready to Improve Your GitHub Repositories?</h2>
+            <p class="lead">Get started today and see how GitAnalytics can help optimize your code.</p>
+          </div>
+          <div class="col-lg-4 text-lg-end mt-4 mt-lg-0">
+            <a href="analyzer.html" class="btn btn-light btn-lg">
+              <i class="fas fa-rocket me-2"></i>Start Free Trial
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq-section py-5 bg-light">
+    <div class="container">
+      <div class="section-header text-center mb-5">
+        <h2>Frequently Asked Questions</h2>
+        <p class="text-muted">Find answers to common questions about GitAnalytics</p>
+      </div>
+      
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="accordion" id="faqAccordion">
+            <div class="accordion-item" data-aos="fade-up">
+              <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  How does GitAnalytics access my GitHub repositories?
+                </button>
+              </h2>
+              <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  <p>GitAnalytics uses the GitHub API to access public repositories. For private repositories, you'll need to authenticate using your GitHub account, which allows us to securely access your private code. We never store your code on our servers - all analysis is done in real-time.</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="accordion-item" data-aos="fade-up">
+              <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  Is my code secure when using GitAnalytics?
+                </button>
+              </h2>
+              <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  <p>Absolutely. We take security very seriously. We use secure API access methods, never store your code on our servers, and all analysis is performed in real-time. Your authentication credentials are encrypted and we follow industry best practices for security.</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="accordion-item" data-aos="fade-up">
+              <h2 class="accordion-header" id="headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  What programming languages does GitAnalytics support?
+                </button>
+              </h2>
+              <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  <p>GitAnalytics supports analysis for most popular programming languages including JavaScript, TypeScript, Python, Java, C#, C++, Ruby, Go, PHP, Swift, and many others. Our analysis engine adapts to the specific conventions and best practices of each language.</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="accordion-item" data-aos="fade-up">
+              <h2 class="accordion-header" id="headingFour">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                  Can I analyze repositories from other Git providers?
+                </button>
+              </h2>
+              <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  <p>Currently, GitAnalytics focuses on GitHub repositories. Support for other Git providers such as GitLab, Bitbucket, and Azure DevOps is on our roadmap and will be available in future updates. Sign up for our newsletter to be notified when these features become available.</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="accordion-item" data-aos="fade-up">
+              <h2 class="accordion-header" id="headingFive">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                  How often is the analysis updated?
+                </button>
+              </h2>
+              <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  <p>For free users, analysis is generated on-demand when you request it. Pro and Team plans include automatic analysis that runs daily or on each commit (configurable in your settings). This allows you to track changes over time and see how your code quality evolves.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="text-center mt-4">
+        <a href="#" class="btn btn-link">View All FAQs</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Section -->
+  <section class="blog-section py-5">
+    <div class="container">
+      <div class="section-header text-center mb-5">
+        <h2>Latest from Our Blog</h2>
+        <p class="text-muted">Tips, insights, and best practices</p>
+      </div>
+      
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="blog-card">
+            <div class="blog-image">
+              <img src="https://images.pexels.com/photos/3861943/pexels-photo-3861943.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Code Quality" class="img-fluid">
+            </div>
+            <div class="blog-content">
+              <div class="blog-meta">
+                <span><i class="far fa-calendar-alt"></i> May 15, 2024</span>
+                <span><i class="far fa-user"></i> Admin</span>
+              </div>
+              <h3><a href="blog-single.html">10 Ways to Improve Your Code Quality Today</a></h3>
+              <p>Simple strategies to enhance code quality and maintainability in your projects...</p>
+              <a href="blog-single.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+          <div class="blog-card">
+            <div class="blog-image">
+              <img src="https://images.pexels.com/photos/60504/security-protection-anti-virus-software-60504.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Security" class="img-fluid">
+            </div>
+            <div class="blog-content">
+              <div class="blog-meta">
+                <span><i class="far fa-calendar-alt"></i> May 10, 2024</span>
+                <span><i class="far fa-user"></i> Admin</span>
+              </div>
+              <h3><a href="blog-single.html">Security Best Practices for GitHub Repositories</a></h3>
+              <p>Essential security measures to protect your code and sensitive data on GitHub...</p>
+              <a href="blog-single.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+          <div class="blog-card">
+            <div class="blog-image">
+              <img src="https://images.pexels.com/photos/3183165/pexels-photo-3183165.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Collaboration" class="img-fluid">
+            </div>
+            <div class="blog-content">
+              <div class="blog-meta">
+                <span><i class="far fa-calendar-alt"></i> May 5, 2024</span>
+                <span><i class="far fa-user"></i> Admin</span>
+              </div>
+              <h3><a href="blog-single.html">Effective Team Collaboration on GitHub</a></h3>
+              <p>Strategies to improve collaboration and productivity among your development team...</p>
+              <a href="blog-single.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="text-center mt-4">
+        <a href="blog.html" class="btn btn-outline-primary">
+          <i class="fas fa-book me-2"></i>View All Articles
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Login Modal -->
+  <div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header border-0">
+          <h5 class="modal-title">Sign In</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="loginForm">
+            <div class="mb-3">
+              <label for="loginEmail" class="form-label">Email address</label>
+              <input type="email" class="form-control" id="loginEmail" required>
+            </div>
+            <div class="mb-3">
+              <label for="loginPassword" class="form-label">Password</label>
+              <input type="password" class="form-control" id="loginPassword" required>
+            </div>
+            <div class="mb-3 form-check">
+              <input type="checkbox" class="form-check-input" id="rememberMe">
+              <label class="form-check-label" for="rememberMe">Remember me</label>
+            </div>
+            <div class="d-grid">
+              <button type="submit" class="btn btn-primary">Sign In</button>
+            </div>
+            <div class="text-center mt-3">
+              <a href="#" class="text-muted">Forgot password?</a>
+            </div>
+          </form>
+          <div class="text-center mt-4">
+            <p class="mb-0">Don't have an account? <a href="#" data-bs-toggle="modal" data-bs-target="#registerModal" data-bs-dismiss="modal">Sign up</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Register Modal -->
+  <div class="modal fade" id="registerModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header border-0">
+          <h5 class="modal-title">Create an Account</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="registerForm">
+            <div class="mb-3">
+              <label for="fullName" class="form-label">Full Name</label>
+              <input type="text" class="form-control" id="fullName" required>
+            </div>
+            <div class="mb-3">
+              <label for="registerEmail" class="form-label">Email address</label>
+              <input type="email" class="form-control" id="registerEmail" required>
+            </div>
+            <div class="mb-3">
+              <label for="registerPassword" class="form-label">Password</label>
+              <input type="password" class="form-control" id="registerPassword" required>
+            </div>
+            <div class="mb-3">
+              <label for="confirmPassword" class="form-label">Confirm Password</label>
+              <input type="password" class="form-control" id="confirmPassword" required>
+            </div>
+            <div class="mb-3 form-check">
+              <input type="checkbox" class="form-check-input" id="agreeTerms" required>
+              <label class="form-check-label" for="agreeTerms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+            </div>
+            <div class="d-grid">
+              <button type="submit" class="btn btn-primary">Sign Up</button>
+            </div>
+          </form>
+          <div class="text-center mt-4">
+            <p class="mb-0">Already have an account? <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-dismiss="modal">Sign in</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <div class="footer-about">
+            <h4 class="footer-title">About GitAnalytics</h4>
+            <p>We help developers and teams analyze their GitHub projects to improve code quality, security, and collaboration.</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#"><i class="fab fa-github"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-2 col-md-4">
+          <div class="footer-links">
+            <h4 class="footer-title">Quick Links</h4>
+            <ul class="list-unstyled">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="blog.html">Blog</a></li>
+              <li><a href="analyzer.html">Code Analyzer</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="col-lg-2 col-md-4">
+          <div class="footer-links">
+            <h4 class="footer-title">Resources</h4>
+            <ul class="list-unstyled">
+              <li><a href="#">Documentation</a></li>
+              <li><a href="#">API</a></li>
+              <li><a href="#">FAQ</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Service</a></li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-4">
+          <div class="footer-newsletter">
+            <h4 class="footer-title">Newsletter</h4>
+            <p>Subscribe to our newsletter for the latest updates and insights.</p>
+            <form class="newsletter-form">
+              <div class="input-group">
+                <input type="email" class="form-control" placeholder="Your email address" required>
+                <button class="btn btn-primary" type="submit">Subscribe</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <div class="row">
+          <div class="col-md-6">
+            <p class="copyright">&copy; 2024 GitAnalytics. All rights reserved.</p>
+          </div>
+          <div class="col-md-6 text-md-end">
+            <p class="credits">Designed with <i class="fas fa-heart"></i> by Bolt</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <a href="#" class="back-to-top">
+    <i class="fas fa-arrow-up"></i>
+  </a>
+
+  <!-- Bootstrap JS Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- AOS - Animate On Scroll Library -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  
+  <!-- Custom JS -->
+  <script src="main1.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Handle repository example buttons
+      const repoButtons = document.querySelectorAll('.repo-buttons button');
+      if (repoButtons.length > 0) {
+        repoButtons.forEach(button => {
+          button.addEventListener('click', function() {
+            const repoName = this.getAttribute('data-repo');
+            document.getElementById('demoRepoUrl').value = repoName;
+          });
+        });
+      }
+      
+      // Handle demo analyzer form
+      const demoForm = document.getElementById('demoAnalyzerForm');
+      if (demoForm) {
+        demoForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          const repoUrl = document.getElementById('demoRepoUrl').value;
+          
+          if (repoUrl.trim() !== '') {
+            window.location.href = `analyzer.html?repo=${encodeURIComponent(repoUrl)}`;
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>
